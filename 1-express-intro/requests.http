@@ -1,0 +1,14 @@
+
+### HOME ROUTE
+GET http://localhost:5000/
+
+### ANIMALS all
+GET http://localhost:5000/animals
+
+### ANIMAL Create
+POST http://localhost:5000/animals
+Content-Type: application/json
+
+{
+  "name": "Thrilling Phoenix"
+}
