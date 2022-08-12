@@ -1,12 +1,6 @@
 const { Router } = require("express");
 const Animal = require("../models/Animal.model");
 
-const animals = [
-  { _id: "a1", name: "Toxic Penguin" },
-  { _id: "a2", name: "Crazy Koala" },
-  { _id: "a3", name: "Sweet Birdy" },
-];
-
 const animalRouter = Router();
 
 // GET ALL animals
