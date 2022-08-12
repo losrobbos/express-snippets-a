@@ -1,0 +1,40 @@
+### HOME ROUTE
+GET http://localhost:5000/
+
+### ANIMALS all
+GET http://localhost:5000/animals
+
+### ANIMAL Create
+POST http://localhost:5000/animals
+Content-Type: application/json
+
+{
+  "name": "Goofy Giraffe"
+}
+
+### FAULTY create
+POST http://localhost:5000/animals
+Content-Type: application/json
+
+{
+  "nameyyy": "Goofy Giraffe"
+}
+
+### ANIMAL Update
+PATCH http://localhost:5000/animals/62f617c6f55bf1371d1ae66b
+Content-Type: application/json
+
+{
+  "name": "Raving Rantanplan"
+}
+
+### FAULTY Update
+PATCH http://localhost:5000/animals/1234
+Content-Type: application/json
+
+{
+  "name": "Raving Rantanplan"
+}
+
+### Delete Animal
+DELETE http://localhost:5000/animals/62f617b2f55bf1371d1ae669
