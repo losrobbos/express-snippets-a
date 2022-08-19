@@ -1,16 +1,26 @@
 const express = require('express'); // ES6 module
+const cors = require("cors")
+const cookieParser = require("cookie-parser")
 const dotenv = require("dotenv")
 const config = dotenv.config() // parse .env file and put variables into process.env
 const animalRouter = require('./routes/animal.router');
 const userRouter = require("./routes/user.router");
+const auth = require('./middleware/auth');
 require("./db-connect")
 console.log(config)
 
 const app = express();
 
+// allow different domains (origins) to send us data
+
+// origin => which frontend is allowed to talk to me (send me data)
+// credentials => allow frontend to store & send cookies to me
+app.use(cors({ origin: process.env.FRONTEND_ORIGIN, credentials: true }));
+
 // BODY PARSER
 // => parses incoming JSON body into req.body variable!
-app.use( express.json() )
+app.use( express.json() ) 
+app.use( cookieParser()) // parses incoming cookies into req.cookies
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
@@ -19,31 +29,10 @@ app.get('/', (req, res) => {
 
 
 // protected route
-app.get("/protected", (req, res, next) => {
-
-  const token = req.headers.authorization;
-
-  // ticket (token) exists? no? kick user out!
-  if(!token) {
-    return res.status(401).send({
-      error: "Kein Token! Kein KINO! Ganz klar! Ticket kaufen, du S***"
-    })
-  }
-
-  // ticket (token) not valid? kick user out! 
-  try {
-    const decodedToken = jwt.verify(token, JWT_SECRET)
-    res.send({
-      message: "You are in the cinema! Enjoy!"
-    })
-  }
-  catch(err) {
-    res.status(401).send({
-      error: err.message
-    });
-  }
-  
-
+app.get("/protected", auth, (req, res, next) => {
+  res.json({
+    message: "You are in! Enjoy the party"
+  })
 })
 
 
