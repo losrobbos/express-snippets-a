@@ -1,0 +1,49 @@
+@API_URL = http://localhost:5000
+
+### HOME ROUTE
+GET {{API_URL}}/
+
+### ANIMALS all
+GET {{API_URL}}/animals
+
+### ANIMAL Create
+POST {{API_URL}}/animals
+Content-Type: application/json
+
+{
+  "name": "Goofy Giraffe"
+}
+
+### FAULTY create
+POST {{API_URL}}/animals
+Content-Type: application/json
+
+{
+  "nameyyy": "Goofy Giraffe"
+}
+
+### ANIMAL Update
+PATCH {{API_URL}}/animals/62f617c6f55bf1371d1ae66b
+Content-Type: application/json
+
+{
+  "name": "Raving Rantanplan"
+}
+
+### FAULTY Update
+PATCH {{API_URL}}/animals/1234
+Content-Type: application/json
+
+{
+  "name": "Raving Rantanplan"
+}
+
+### Delete Animal
+DELETE {{API_URL}}/animals/62f617b2f55bf1371d1ae669
+
+### Login and get ticket (=token)
+GET {{API_URL}}/login
+
+#### 
+GET {{API_URL}}/protected
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJyMTIzIiwibmFtZSI6IlJvYiIsImlhdCI6MTY2MDI5ODA2N30.QwSRr-ptuS0J6o2WFWjjWps-ZIIWYXUFg1_Bjkj6nrY
