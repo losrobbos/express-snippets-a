@@ -30,7 +30,7 @@ Content-Type: application/json
   "name": "Raving Rantanplan"
 }
 
-### FAULTY Update
+### FAULTY Update (wrong ID format)
 PATCH {{API_URL}}/animals/1234
 Content-Type: application/json
 
@@ -41,9 +41,34 @@ Content-Type: application/json
 ### Delete Animal
 DELETE {{API_URL}}/animals/62f617b2f55bf1371d1ae669
 
-### Login and get ticket (=token)
-GET {{API_URL}}/login
 
-#### 
+
+# AUTH
+
+### Login and get ticket (=token)
+POST {{API_URL}}/login
+
+### User SIGNUP
+POST {{API_URL}}/signup
+Content-Type: application/json
+
+{
+  "email": "rob@rob.net",
+  "password": "rob123",
+  "username": "robos"
+}
+
+### User LOGIN
+POST {{API_URL}}/login
+Content-Type: application/json
+
+{
+  "email": "rob@rob.net",
+  "password": "rob123"
+}
+
+
+
+#### Access Protected route
 GET {{API_URL}}/protected
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJyMTIzIiwibmFtZSI6IlJvYiIsImlhdCI6MTY2MDI5ODA2N30.QwSRr-ptuS0J6o2WFWjjWps-ZIIWYXUFg1_Bjkj6nrY
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmZmNDMxZmI1MjZjOGUwNWQyNjQxZWIiLCJlbWFpbCI6InJvYkByb2IuY29tIiwiaWF0IjoxNjYxNDYxNDc5fQ.necz98Fv2MC2GsC43rswtB1H9729ev8ndsbXFirS1cA
