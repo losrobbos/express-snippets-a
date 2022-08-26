@@ -1,0 +1,15 @@
+{
+  "user": {
+    "name": "robbos",
+    "todos": [
+      { "_id": "t1", "title": "Wake the dog" },
+      { "_id": "t1", "title": "Code some relations" },
+    ],
+    "social-media": [
+      { "platform": "facebook", "link": "https://facebook.com/robbos"  }
+      { "platform": "twitter", "link": "https://twitter.com/robbos"  }
+      { "platform": "instagram", "link": "https://instagram.com/robbos"  }
+    ]
+  }
+}
+
