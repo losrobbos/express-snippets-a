@@ -1,17 +1,20 @@
+// load environment configuration FIRST
 const dotenv = require("dotenv")
 const config = dotenv.config() // parse .env file and put variables into process.env
 console.log(config); // show loaded env configuration
 
+// setup connection to mongoDB
+require("./db-connect") 
+
+// setup express API
 const express = require('express');
 const animalRouter = require('./routes/animal.router');
-const { auth } = require("./middleware/auth.middleware");
 const authRouter = require("./routes/auth.router");
-require("./db-connect")
+const { auth } = require("./middleware/auth.middleware");
 const app = express();
 
 
-// BODY PARSER
-// => parses incoming JSON body into req.body variable!
+// JSON BODY PARSER => parses incoming JSON body into req.body variable!
 app.use( express.json() )
 
 app.get('/', (req, res) => {
