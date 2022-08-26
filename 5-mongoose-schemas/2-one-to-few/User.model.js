@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
+// Sub Schema
 const SocialMediaSchema = new Schema({ 
   platform: String,
   link: String
